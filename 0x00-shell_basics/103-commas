@@ -1,2 +1,2 @@
 #!/bin/bash
-printf '%s\n' ./* ../* | LC_COLLATE=C sort -df | sed -e 's|/$|/|' -e '$a\'
+printf "%s," $(find . -maxdepth 1 -printf "%f\n" | sort -df --key=1.1) && echo
