@@ -1,0 +1,5 @@
+#!/bin/bash
+if test -f "*.html"
+then
+	mv *.html ..
+fi
