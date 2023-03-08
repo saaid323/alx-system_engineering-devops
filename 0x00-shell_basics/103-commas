@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -1ap | sed ':a;N;$!ba;s/\n/, /g; s/\([0-9a-zA-Z]\) /\1/g; s/,$/\n/'
+printf '%s\n' ./* ../* | LC_COLLATE=C sort -df | sed -e 's|/$|/|' -e '$a\'
