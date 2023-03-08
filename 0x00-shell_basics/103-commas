@@ -1,0 +1,2 @@
+#!/bin/bash
+ls -1ap | sed ':a;N;$!ba;s/\n/, /g; s/\([0-9a-zA-Z]\) /\1/g; s/,$/\n/'
