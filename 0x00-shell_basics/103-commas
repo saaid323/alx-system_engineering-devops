@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "%s," $(find . -maxdepth 1 -printf "%f\n" | sort -df --key=1.1) && echo
+ls -la -p -m -v
