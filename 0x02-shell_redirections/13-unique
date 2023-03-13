@@ -1,0 +1,2 @@
+#!/bin/bash
+if list | uniq -c < 1 cat list
