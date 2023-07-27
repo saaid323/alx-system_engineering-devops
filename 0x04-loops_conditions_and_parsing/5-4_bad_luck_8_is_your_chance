@@ -10,13 +10,11 @@ do
         if [ $i -eq 4 ]
         then
                 echo "bad luck"
-		i=$(( i +1 ))
-        fi
-	if [ $i -eq 8 ]
+	elif [ $i -eq 8 ]
         then
                 echo "good luck"
-                i=$(( i +1 ))
-        fi
-	echo "Best School"
+	else
+		echo "Best School"
+	fi
         i=$(( i +1 ))
 done
