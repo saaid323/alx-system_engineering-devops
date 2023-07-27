@@ -5,5 +5,12 @@
 
 for i in *
 do
-    echo $i
+	if [[ -f "$i" ]]
+	then
+        # Extract the part of the name after the first dash
+        name_after_dash=${i#*-}
+
+        # Print the extracted name
+        echo "$name_after_dash"
+    fi
 done
