@@ -18,12 +18,11 @@ handle_sigint()
 handle_sigterm()
 {
   echo "I hate the kill command"
-  exit 0
 }
 
-trap 'handle_sigterm_sigquit' SIGTERM SIGQUIT
+trap 'handle_sigterm_sigquit' SIGQUIT
 trap 'handle_sigint' SIGINT
-trap 'handle_sigterm' SIGTERM
+trap "handle_sigterm && handle_sigterm_sigquit" SIGTERM
 touch /var/run/myscript.pid
 id=$(pgrep -f /var/run/myscript.pid)
 echo "$id" > /var/run/myscript.pid
