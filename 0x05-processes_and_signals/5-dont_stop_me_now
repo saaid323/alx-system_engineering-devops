@@ -2,4 +2,4 @@
 # stopped our 4-to_infinity_and_beyond
 
 id=$(pgrep -f 4-to_infinity_and_beyond)
-pkill "$id"
+kill "$id"
