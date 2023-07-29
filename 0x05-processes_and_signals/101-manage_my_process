@@ -5,19 +5,21 @@
 if [ $# == 0 ]
 then
     echo "Usage: manage_my_process {start|stop|restart}"
-elif [ $1 == "start" ]
-then
-	sudo /alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process start
-	echo $$ >> /var/run/my_process.pid
-	echo "manage_my_process started"
-elif [ $1 == "stop" ]
-then
-        sudo /alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process stop
-        rm /var/run/my_process.pid
-        echo "manage_my_process stopped"
-elif [ $1 == "restart" ]
-then
-        sudo /alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process start
-        echo $$ >> /var/run/my_process.pid
-        echo "manage_my_process restarted"
 fi
+case $1 in
+	start)
+		sudo systemctl start /alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process
+		echo $$ >> /var/run/my_process.pid
+		echo "manage_my_process started"
+		;;
+	stop)
+		sudo systemctl stop /alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process
+		rm /var/run/my_process.pid
+		echo "manage_my_process stopped"
+		;;
+	restart)
+		sudo systemctl start /alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process
+		echo $$ >> /var/run/my_process.pid
+		echo "manage_my_process restarted"
+		;;
+esac
