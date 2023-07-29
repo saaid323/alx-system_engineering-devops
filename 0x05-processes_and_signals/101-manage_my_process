@@ -8,17 +8,17 @@ then
 fi
 case $1 in
 	start)
-		sudo systemctl start /alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process
+		sudo /alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process start
 		echo $$ >> /var/run/my_process.pid
 		echo "manage_my_process started"
 		;;
 	stop)
-		sudo systemctl stop /alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process
+		sudo /alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process start
 		rm /var/run/my_process.pid
 		echo "manage_my_process stopped"
 		;;
 	restart)
-		sudo systemctl start /alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process
+		sudo /alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process start
 		echo $$ >> /var/run/my_process.pid
 		echo "manage_my_process restarted"
 		;;
