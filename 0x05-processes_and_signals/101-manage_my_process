@@ -8,16 +8,20 @@ then
 fi
 case $1 in
 	start)
-		sudo /alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process start
+		./manage_my_process &
 		echo $$ >> /var/run/my_process.pid
 		echo "manage_my_process started"
 		;;
 	stop)
-		sudo /alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process start
+		pid=$(cat /var/run/my_process.pid)
+		kill $pid
 		rm /var/run/my_process.pid
 		echo "manage_my_process stopped"
 		;;
 	restart)
+		pid=$(cat /var/run/my_process.pid)
+		kill $pid
+                rm /var/run/my_process.pid
 		sudo /alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process start
 		echo $$ >> /var/run/my_process.pid
 		echo "manage_my_process restarted"
