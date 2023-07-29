@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# manages manage_my_process
+
+
+if [ $# == 0 ]
+then
+    echo "Usage: manage_my_process {start|stop|restart}"
+elif [ $1 == "start" ]
+then
+	/alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process start
+	echo $$ >> /var/run/my_process.pid
+	echo "manage_my_process started"
+elif [ $1 == "stop" ]
+then
+        /alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process stop
+        rm  /var/run/my_process.pid
+        echo "manage_my_process stopped"
+elif [ $1 == "restart" ]
+then
+        /alx-system_engineering-devops/0x05-processes_and_signals/manage_my_process start
+        echo $$ >> /var/run/my_process.pid
+        echo "manage_my_process restarted"
+fi
