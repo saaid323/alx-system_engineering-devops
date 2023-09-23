@@ -1,4 +1,4 @@
 # SSH client configuration file
 Host *
-	PermitRootLogin No
+	PasswordAuthentication no
 	IdentityFile ~/.ssh/school
