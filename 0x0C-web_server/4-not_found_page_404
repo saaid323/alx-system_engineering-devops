@@ -22,6 +22,6 @@ echo "server {
    location = /err.html {
       internal;
    }
-}" | sudo tee /etc/nginx/sites-available/default
+}" > default
 sudo mv -f default /etc/nginx/sites-available/default
 sudo service nginx restart
