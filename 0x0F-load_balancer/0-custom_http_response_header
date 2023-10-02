@@ -1,25 +1,9 @@
 #!/usr/bin/env bash
 # Configure Nginx so that its HTTP response contains a custom header
-sudo apt-get -y update
-sudo apt-get -y install nginx
-sudo sh -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
-cat <<EOF | sudo tee /etc/nginx/sites-available/custom_404
-server {
-    listen 80 default_server;
-    server_name _;
-
-    location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-    }
-
-    location / {
-        add_header X-Served-By "\$(hostname)";
-    }
-
-    location @oui_oui_baguette {
-        default_type text/html;
-        return 404 "Ceci n'est pas une page";
-    }
-}
-EOF
-sudo service nginx restart
+apt-get -y update
+apt-get -y install nginx
+sudo sh -c "echo 'Hello World!' > /var/www/html/index.nginx-debian.html"
+sudo sh -c "echo 'Ceci n'est pas une page' > /usr/share/nginx/html/custom_404.html"
+sudoo sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/Tolulope05 permanent;\n\n\terror_page 404 \/custom_404.html;\n\tlocation = \/custom_404.html {\n\t\troot \/usr\/share\/nginx\/html;\n\t\tinternal;\n\t}/" /etc/nginx/sites-available/default
+sudo sed -i "s/include \/etc\/nginx\/sites-enabled\/\*;/include \/etc\/nginx\/sites-enabled\/\*;\n\tadd_header X-Served-By \"$HOSTNAME\";/" /etc/nginx/nginx.conf
+sudo service nginx start
