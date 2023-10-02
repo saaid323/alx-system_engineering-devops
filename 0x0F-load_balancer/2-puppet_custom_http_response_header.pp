@@ -1,6 +1,6 @@
 #  automate the task of creating a custom HTTP header response, but with Puppet.
 
-{ 'update':
+exec { 'update':
   command  => 'sudo apt-get -y update',
   path     => '/usr/bin',
   logoutput => true,
