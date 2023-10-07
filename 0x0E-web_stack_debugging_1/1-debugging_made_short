@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 # debugging
-sudo python3 -m http.server --directory /usr/share/nginx/html 80 > /dev/null 2>&1 &
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx stop
+sudo service nginx start
