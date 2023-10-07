@@ -1,33 +1,11 @@
 #!/usr/bin/env bash
-# Configure your domain zone
-
-display_subdomain_info() {
-  local domain="$1"
-  local subdomain="$2"
-  local result=$(dig +short "$subdomain.$domain")
-
-  if [[ -n "$result" ]]; then
-    local record_type=$(dig +short -t "$subdomain.$domain" | awk 'NR==1{print $4}')
-    echo "The subdomain $subdomain is a $record_type record and points to $result"
-  else
-    echo "No records found for subdomain $subdomain"
-  fi
-}
-main() {
-  local domain="$1"
-  local subdomain="$2"
-  subdomains=("www" "lb-01" "web-01" "web-02")
-
-  if [[ -z "$subdomain" ]]; then
-    for sub in "${subdomains[@]}"; do
-      display_subdomain_info "$domain" "$sub"
-    done
-  else
-    display_subdomain_info "$domain" "$subdomain"
-  fi
-}
-if [[ $# -eq 2 ]]; then
-  main "$1" "$2"
-else
-  echo "Usage: $0 <domain> [<subdomain>]"
+# Configure your domain 
+if [ "$#" -eq 1 ]; then
+    echo "$(dig www.$1 | awk '/ANSWER SECTION:/ {getline; print "The subdomain www is a "$4" record and points to "$5}')"
+    echo "$(dig lb-01.$1 | awk '/ANSWER SECTION:/ {getline; print "The subdomain lb-01 is a "$4" record and points to "$5}')"
+    echo "$(dig web-01.$1 | awk '/ANSWER SECTION:/ {getline; print "The subdomain web-01 is a "$4" record and points to "$5}')"
+    echo "$(dig web-02.$1 | awk '/ANSWER SECTION:/ {getline; print "The subdomain web-02 is a "$4" record and points to "$5}')"
+elif [ "$#" -eq 2 ]; then
+    n=$2
+    echo "$(dig $n.$1 | awk '/ANSWER SECTION:/ {getline; print "The subdomain '"$n"' is a "$4" record and points to "$5}')"
 fi
