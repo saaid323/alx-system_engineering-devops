@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """script to export data in the CSV format"""
 import csv
-import sys
 import requests
+import sys
 
 if __name__ == "__main__":
     num = sys.argv[1]
@@ -10,7 +10,7 @@ if __name__ == "__main__":
     url = f'https://jsonplaceholder.typicode.com/users/{num}/todos'
     task = requests.get(url)
     name = users.json()['username']
-    with open(f'{num}.csv', mode='w') as employee_file:
+    with open(f'{num}.csv', mode='w') as emp_file:
         for i in task.json():
-            employee_writer = csv.writer(employee_file, delimiter=',', quoting=csv.QUOTE_ALL)
-            employee_writer.writerow([num, name, i['completed'], i['title']])
+            employee = csv.writer(emp_file, delimiter=',', quoting=csv.QUOTE_ALL)
+            employee.writerow([num, name, i['completed'], i['title']])
