@@ -11,9 +11,9 @@ def count_words(subreddit, word_list, after=None, counts=None):
         print_results(counts)
         return
 
-    url = f'https://www.reddit.com/r/{subreddit}/hot.json?limit=100'
+    url = 'https://www.reddit.com/r/{}/hot.json?limit=100'.format(subreddit)
     if after:
-        url += f'&after={after}'
+        url += '&after={}'.format(after)
 
     headers = {'User-Agent': 'user-agent/1.0'}
     response = requests.get(url, headers=headers)
