@@ -30,7 +30,7 @@ def count_words(subreddit, word_list, after=None, counts=None):
 
         after = data['data']['after']
         count_words(subreddit, word_list, after, counts)
-    elif word_list:=
+    elif word_list:
         print_results(counts)
 
 def print_results(counts):
