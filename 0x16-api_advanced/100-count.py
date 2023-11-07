@@ -38,4 +38,4 @@ def print_results(counts):
     if counts:
         sorted_counts = sorted(counts.items(), key=lambda x: (-x[1], x[0]))
         for keyword, count in sorted_counts:
-            print(f'{keyword}: {count}')
+            print('{}: {}').format(keyword, count)
