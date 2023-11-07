@@ -2,6 +2,7 @@
 """prints a sorted count of given keywords """
 import requests
 
+
 def count_words(subreddit, word_list, after=None, counts=None):
     """function that prints a sorted count of given keywords """
     if counts is None:
@@ -32,6 +33,7 @@ def count_words(subreddit, word_list, after=None, counts=None):
         count_words(subreddit, word_list, after, counts)
     elif word_list:
         print_results(counts)
+
 
 def print_results(counts):
     """sort the counts by value in descending order"""
