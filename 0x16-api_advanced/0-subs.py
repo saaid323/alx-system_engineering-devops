@@ -5,7 +5,7 @@ import requests
 
 def number_of_subscribers(subreddit):
     """returns the number of subscribers"""
-    custom_user_agent = 'MyCustomApp/1.0'
+    custom_user_agent = 'user_agent/1.0'
     headers = {
         'User-Agent': custom_user_agent,
     }
